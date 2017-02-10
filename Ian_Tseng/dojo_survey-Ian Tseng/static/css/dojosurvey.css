@@ -1,0 +1,30 @@
+/** {
+  outline: 1px dotted red;
+}*/
+* {
+  margin: 0px auto;
+}
+.wrapper {
+  margin-top: 10px;
+  padding: 10px 0px 10px 0px;
+  width: 350px;
+  height: 140px;
+  text-align: center;
+  border: 1px solid black;
+}
+.da-input {
+  font-family: monospace;
+  display: block;
+  margin-bottom: 5px;
+}
+.info {
+  font-family: monospace;
+  display: block;
+  list-style-type: none;
+  margin: 5px;
+  padding: 0px;
+}
+p {
+  font-weight: bold;
+  font-family: monospace;
+}
