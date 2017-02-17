@@ -1,0 +1,20 @@
+<html>
+    <head>
+       <title>Submitted Info</title>
+    </head>
+    <body>
+        <h3>Submitted Info</h3>
+        <p>Thank you for submitting this form! You</p>
+        <p>have submitted this form {{request.session.sbmsn_count}} not.</p>
+        <hr>
+        <p>Name: {{request.session.name}}</p>
+        <p>Dojo Location: {{request.session.location}}</p>
+        <p>Favorite Language: {{request.session.language}}</p>
+        <p>Comments: {{request.session.comments}}</p>
+
+        <form action='/back' method='post'>
+            {% csrf_token %}
+            <input type='submit' value='Go Back'>
+        </form>
+    </body>
+</html>

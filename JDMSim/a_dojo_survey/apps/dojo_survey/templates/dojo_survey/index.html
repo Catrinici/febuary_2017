@@ -1,0 +1,27 @@
+<html>
+    <head>
+       <title>Form Test Index</title>
+    </head>
+    <body>
+      <form action='/results' method='post'>
+       {% csrf_token %} 
+          Your Name: <input type='text' name='name'>
+          <br><br>
+          Dojo Location: <select name='location'>
+            <option value='seattle'>Seattle</option>
+            <option value='sanfran'>San Fransisco</option>
+            <option value='chicago'>Chicago</option>
+        </select>
+          <br><br>
+          Favorite Language: <select name='language'>
+              <option value='python'>Python</option>
+              <option value='csharp'>C#</option>
+              <option value='javascript'>JavaScript</option>
+            </select>
+              <br><br>
+          Comments (Optional): <br><textarea rows="4" cols="50" name='comments'></textarea>
+          <br>
+          <input type='submit' value='Button'>
+      </form>
+    </body>
+</html>
