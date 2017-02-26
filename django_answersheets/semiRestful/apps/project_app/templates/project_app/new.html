@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    <h2>Add a new product</h2>
+    <form action="{% url 'products:create' %}" method='post'>
+      {% csrf_token %}
+      <p>Name:</p>
+      <input type="text" name='name'>
+      <p>Description:</p>
+      <input type="text" name='description'>
+      <p>Price:</p>
+      <input type="text" name='price'>
+      <input type="submit" value="Create">
+    </form>
+    <a href="{% url 'products:index' %}">Back</a>
+  </div><!-- end_of_container-->
+</body>
+</html>

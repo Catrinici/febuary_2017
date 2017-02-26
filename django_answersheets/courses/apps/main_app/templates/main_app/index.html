@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form class="" action="{% url 'courses:create_course' %}" method="post">
+      {% csrf_token %}
+      <p>Course
+        <input type="text" name="name" value="">
+      </p>
+      <p>
+        <textarea name="content" rows="5" cols="20"></textarea>
+      </p>
+      <input type="submit" name="submit" value="Add">
+    </form>
+    <hr>
+    {% for descripton in descriptons %}
+      <p>
+        {{ descripton.id }}
+      </p>
+    {% endfor %}
+    {% if courses %}
+      <ul>
+        {% for course in courses %}
+          <li>{{ course.name }} {{ course.descripton.content }}
+            <form class="" action="/delete/{{ course.id }}" method="post">
+              {% csrf_token %}
+              <input type="submit" name="submit" value="Delete course">
+            </form>
+            <form class="" action="/descripton/delete/{{ course.descripton.id }}" method="post">
+              {% csrf_token %}
+              <input type="submit" name="submit" value="Delete descripton">
+            </form>
+          </li>
+          <hr>
+          {% endfor %}
+      </ul>
+    {% endif %}
+  </body>
+</html>

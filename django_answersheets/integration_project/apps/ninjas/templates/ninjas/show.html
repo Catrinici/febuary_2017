@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>All Ninjas</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'ninjas/style/show.css' %}" media="screen" title="no title">
+  </head>
+  <body>
+    <div class="allNinjas">
+      <a href={% url 'ninjas:no_ninjas' %}>Go Home</a>
+      {% for ninja, value in ninjas.items %}
+        <img src="{% static 'ninjas/images/'|add:value %}" alt="" height="200" width='150'>
+        {% ifnotequal ninjas|length 1 %}
+          <!-- <a href={"/ninjas/{{ ninja }}"}>{{ninja}}</a> -->
+          <a href={% url 'ninjas:show_ninja' ninja=ninja %}>{{ninja}}</a>
+        {% endifnotequal %}
+      {% endfor %}
+    </div><!-- end_of_allNinjas-->
+  </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Semi-Restful Routes</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Products</h1>
+    {% if products %}
+      <table border='1'>
+        <tr>
+          <th>
+            Name
+          </th>
+          <th>
+            Description
+          </th>
+          <th>
+            Price
+          </th>
+          <th>
+            Actions
+          </th>
+        </tr>
+      {% for product in products %}
+        <tr>
+          <td>
+            {{ product.name }}
+          </td>
+          <td>
+            {{ product.description }}
+          </td>
+          <td>
+            {{ product.price }}
+          </td>
+          <td>
+            <a href="{% url 'products:show' id=product.id %}">Show</a> | <a href="{% url 'products:edit' id=product.id %}">Edit</a> |
+            <form class="" action="{% url 'products:delete' id=product.id %}" method="post">
+              {% csrf_token %}
+              <input type="submit" name="submit" value="Delete">
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+    {% endif %}
+    <a href="{% url 'products:new' %}">Add a new product</a>
+  </div><!-- end_of_container-->
+</body>
+</html>

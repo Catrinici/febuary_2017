@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Create Course</h1>
+    <a href="{% url 'main:index' %}">Return to main page</a>
+    <form class="" action="{% url 'courses:create_course' %}" method="post">
+      {% csrf_token %}
+      <p>Course
+        <input type="text" name="name" value="">
+      </p>
+      <p>Description
+        <textarea name="content" rows="5" cols="20"></textarea>
+      </p>
+      <input type="submit" name="submit" value="Add">
+    </form>
+    <hr>
+    {% if courses %}
+      <ul>
+        {% for course in courses %}
+          <li>{{ course.name }} {{ course.descripton.content }}
+            <form class="" action="{% url 'courses:delete_description' descripton_id=course.descripton.id %}" method="post">
+              {% csrf_token %}
+              <input type="submit" name="submit" value="Delete descripton">
+            </form>
+          </li>
+          <hr>
+          {% endfor %}
+      </ul>
+    {% endif %}
+    <h3>Add Users to Courses</h3>
+    <form action="{% url 'courses:courses_has_users' %}" method='post'>
+      {% csrf_token %}
+      <select name="user_id" id="">
+        {% for user in users %}
+          <option value="{{ user.id }}">{{ user.first_name }} {{ user.last_name }}</option>
+        {% endfor %}
+      </select>
+      <select name="course_id" id="">
+        {% for course in courses %}
+          <option value="{{ course.id }}">{{ course.name }}</option>
+        {% endfor %}
+      </select>
+      <input type="submit" value="Submit">
+    </form>
+    <table>
+      <thead>
+        <tr>
+          <th>Course</th>
+          <th>Title</th>
+          <th>Number of Users</th>
+        </tr>
+        {% for course in courses %}
+          <tr>
+            <td>{{ course.id }}</td>
+            <td>{{ course.descripton.content }}</td>
+            <td>{{ course.users.count }}</td>
+          </tr>
+        {% endfor %}
+      </thead>
+    </table>
+  </body>
+</html>
